@@ -1,10 +1,9 @@
 import HomeLayout from "../Layouts/HomeLayout";
 import aboutImage from '../Assets/Images/girl.png';
-import apj from '../Assets/Images/apj.jpg'
-import bill from '../Assets/Images/bill.png'
-import ein from '../Assets/Images/ein.png'
-import mandela from '../Assets/Images/mandela.png'
+import { celebrities } from "../Constants/CelebrityData";
+import CarouselSlide from "../Components/CarouselSlide.jsx";
 function AboutUs(){
+
     return(
         <HomeLayout>
             <div className="pl-20 pt-20 flex flex-col text-white">
@@ -34,59 +33,10 @@ function AboutUs(){
             
 
                 <div className="carousel w-1/2 my-16 m-auto">
-                    <div id="slide1" className="carousel-item relative w-full">
-                        <div className="flex flex-col items-center justify-center gap-4 px-[15%]">
-                            <img src={apj} className=" w-40 rounded-full border-2 border-gray-400" />
-                            <p className="text-xl text-gray-200">
-                                {"Failure will never overtake me if my determination to succeed is strong enough. All of us do not have equal talent. But , all of us have an equal opportunity to develop our talents."}
-                            </p>
-                            <h1 className="text-2xl font-semibold">A.P.J Abdul Kalam</h1>
-                            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                            <a href="#slide5" className="btn btn-circle">❮</a> 
-                            <a href="#slide2" className="btn btn-circle">❯</a>
-                            </div>
-                        </div>
-                        
-                    </div> 
-                    <div id="slide2" className="carousel-item relative w-full">
-                    <div className="flex flex-col items-center justify-center gap-4 px-[15%]">
-                            <img src={bill} className=" rounded-full border-2 border-gray-400" />
-                            <p className="text-xl text-gray-200">
-                                {"It's fine to celebrate success, but it is more important to heed the lessons of failure.” It's easy to get caught up in the excitement of success, but success on its own has very little to teach you"}
-                            </p>
-                            <h1 className="text-2xl font-semibold">Bill Gates</h1>
-                            <div className="absolute  flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                            <a href="#slide1" className="btn btn-circle">❮</a> 
-                            <a href="#slide3" className="btn btn-circle">❯</a>
-                            </div>
-                        </div>
-                    </div> 
-                    <div id="slide3" className="carousel-item relative w-full">
-                    <div className="flex flex-col items-center justify-center gap-4 px-[15%]">
-                            <img src={ein} className=" rounded-full border-2 border-gray-400" />
-                            <p className="text-xl text-gray-200">
-                                {"Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning."}
-                            </p>
-                            <h1 className="text-2xl font-semibold">Albert Einstein</h1>
-                            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                            <a href="#slide2" className="btn btn-circle">❮</a> 
-                            <a href="#slide4" className="btn btn-circle">❯</a>
-                            </div>
-                        </div>
-                    </div> 
-                    <div id="slide4" className="carousel-item relative w-full">
-                    <div className="flex flex-col items-center justify-center gap-4 px-[15%]">
-                            <img src={mandela} className=" rounded-full border-2 border-gray-400" />
-                            <p className="text-xl text-gray-200">
-                                {"Do not judge me by my successes, judge me by how many times I fell down and got back up again."}
-                            </p>
-                            <h1 className="text-2xl font-semibold">Nelson Mandela</h1>
-                            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                            <a href="#slide3" className="btn btn-circle">❮</a> 
-                            <a href="#slide4" className="btn btn-circle">❯</a>
-                            </div>
-                        </div>
-                    </div>
+                    {celebrities && celebrities.map(celebrity => (
+                        <CarouselSlide {...celebrity} key={celebrity.slideNumber}   
+                        totalSlides={celebrities.length} />
+                    ))}
                     </div>
 
 
