@@ -45,13 +45,14 @@ function Signup(){
             }
         }
         
-
-        function createNewAccount(event){
+        async function createNewAccount(event) {
             event.preventDefault();
-            if(!signupData.email || !signupData.password || !signupData.avatar ){
+            if(!signupData.email || !signupData.password || !signupData.avatar || !signupData.fullname){
                 toast.error("Please fill all the details");
                 return;
-            }
+        }
+        
+        
             //checking name field length
             if(signupData.fullname.length < 5){
                 toast.error("Name should be atleast of 5characters")
@@ -68,7 +69,7 @@ function Signup(){
             }
             
 
-            const formData = new formData();
+            const formData = new FormData();
             formData.append("fullname", signupData.fullname);
             formData.append("email", signupData.email);
             formData.append("password", signupData.password);
@@ -81,14 +82,14 @@ function Signup(){
                     navigate("/");
                 }
                 
-            signupData({
-                fullname: "",
-                email: "",
-                password: "",
-                avatar: ""
-            })
-            setPreviewImage("");
-        
+                setSignupData({
+                    fullname: "",
+                    email: "",
+                    password: "",
+                    avatar: ""
+                });
+                setPreviewImage("");
+                
         }
 
         return(
